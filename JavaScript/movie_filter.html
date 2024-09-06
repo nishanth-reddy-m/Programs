@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let movies = [];
+        do
+        {
+            let name = prompt("Enter the movie name");
+            let rating = Number(prompt("Enter its rating"));
+            if( name && !Number.isNaN(rating) && rating > 0 ){
+                let movie = {
+                    name:name,
+                    rating:rating
+                }
+                if(movie.rating >= 7){
+                    movies.push(movie);
+                }
+                else{
+                    movies.unshift(movie);
+                }
+            }
+            else{
+                alert("Inputs ended");
+                break;
+            }
+        }while(1)
+        console.log("Given movies\n");
+        for(movie of movies){
+            console.log(`${movie.name} (${movie.rating})`);
+        }
+    </script>
+</body>
+</html>

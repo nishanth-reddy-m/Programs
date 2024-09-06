@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1
+
+        // for(let i = 100; i > 0 ; i -= 10)
+        // {
+        //     console.log(i);
+        // }
+    
+        // 2
+
+        // alert("Condition: Initial > Final");
+        // let initial = Number(prompt("Enter the Initial number: "));
+        // let final = Number(prompt("Enter the Final number: "));
+        // if(!isNaN(initial) && !isNaN(final)){
+        //     if(initial > final){
+        //         for(let i = initial; i >= final; i -= 10){
+        //             console.log(i);
+        //         }
+        //     }
+        //     else
+        //     {
+        //         alert("Initial should be greater than Final");
+        //     }
+        // }
+        // else{
+        //     alert("Invalid Input!");
+        // }
+
+        // 3
+
+        let numbers = [21, 45, 100, 12, 11, 78, 61, 4, 39, 22];
+        for(let number of numbers){
+            console.log(number);
+        }
+        console.log("\nEven numbers");
+        for(let number of numbers){
+            if(number % 2 === 0){
+                console.log(number);
+            }
+        }
+        console.log("\nNumbers between 10 and 60");
+        for(let number of numbers){
+            if(number > 10 && number < 60){
+                console.log(number);
+            }
+        }
+        console.log("\nEven numbers between 10 and 60");
+        for(let number of numbers){
+            if(number > 10 && number < 60 && !(number % 2)){
+                console.log(number);
+            }
+        }
+    </script>
+</body>
+</html>

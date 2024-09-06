@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="lab_2.0.15-2.2.5.js"></script>
+</head>
+<body>
+    <script>
+        alert("Provide your details to add you into the contacts");
+        user_name = prompt("Enter your name");
+        user_phone = prompt("Enter your phone number");
+        user_email = prompt("Enter your email");
+        user_details = {
+            name:user_name,
+            phone:user_phone,
+            email:user_email
+        }
+        alert("Previous");
+        alert(`Length = ${length}`);
+        alert(`Last Contact = ${contacts[last_index].name} / ${contacts[last_index].phone} / ${contacts[last_index].email}`);
+        contacts.push(user_details);
+        length = contacts.length;
+        last_index = length - 1;
+        alert("New");
+        alert(`Length = ${length}`);
+        alert(`Last Contact = ${contacts[last_index].name} / ${contacts[last_index].phone} / ${contacts[last_index].email}`);
+    </script>
+</body>
+</html>

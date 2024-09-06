@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Locker Management System</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+    }
+    #container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
+    .list {
+        border: 1px solid #000;
+        border-radius: 5px;
+        padding: 20px;
+        width: 50%;
+        background-color: transparent;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .list h2 {
+        text-align: center;
+        padding: 0;
+    }
+    .numbers {
+        display: flex;
+        flex-wrap: wrap;
+        text-align: center;
+        justify-content: center;
+        list-style-type: none;
+        padding: 0;
+    }
+    .number {
+        border: 1px solid #000;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 5px;
+        background-color: transparent;
+        cursor: pointer;
+        flex: 0 0 calc(10% - 5px);
+        max-width: calc(10% - 5px);
+    }
+    .number:hover {
+        border-color: #007bff;
+    }
+    .number.selected {
+        background-color: #28a745;
+    }
+    .number.disabled {
+        background-color: #ccc;
+        border-color: #ccc;
+        cursor: not-allowed;
+    }
+    .btn {
+        background-color: #007bff;
+        border: none;
+        color: white;
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        cursor: pointer;
+        border-radius: 5px;
+        width: 100%;
+        max-width: 50%;
+    }
+
+    .btn:hover {
+        background-color: #0056b3;
+    }
+    .button-container {
+        text-align: center;
+        width: 100%;
+    }
+</style>
+</head>
+<body>
+<div id="container">
+    <div class="list">
+        <h2>Checked in Lockers</h2><br>
+        <ul id="checkedInList" class="numbers">
+            <li class="number disabled" data-number="1">1</li>
+            <li class="number disabled" data-number="2">2</li>
+            <li class="number disabled" data-number="3">3</li>
+            <li class="number disabled" data-number="4">4</li>
+            <!-- List of checked in numbers will be dynamically added here -->
+        </ul><br>
+        <div class="button-container"><button id="checkOutBtn" class="btn">Check out</button></div>
+    </div>
+    <div class="list">
+        <h2>Available Lockers</h2><br>
+        <ul id="availableList" class="numbers">
+            <li class="number enabled" data-number="1">1</li>
+            <li class="number enabled" data-number="2">2</li>
+            <li class="number enabled" data-number="3">3</li>
+            <li class="number enabled" data-number="4">4</li>
+            <!-- List of available numbers will be dynamically added here -->
+        </ul><br>
+        <div class="button-container"><button id="checkInBtn" class="btn">Check in</button></div>
+    </div>
+    <div class="button-container"><button id="logoutBtn" class="btn">Logout</button></div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const availableList = document.getElementById("availableList");
+        const checkedInList = document.getElementById("checkedInList");
+        const checkInBtn = document.getElementById("checkInBtn");
+        const checkOutBtn = document.getElementById("checkOutBtn");
+
+        // Function to toggle selection
+        function toggleSelection(element) {
+            if (!element.classList.contains("disabled")) {
+                element.classList.toggle("selected");
+            }
+        }}
+</script>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration Page</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .registration-container {
+    margin: 50px;
+    border: 1px solid #000;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+  }
+  .registration-container h2 {
+    text-align: center;
+  }
+  .form-group {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .form-group label {
+    display: inline-block;
+    font-weight: bold;
+  }
+  .form-group input {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 300px;
+    align-items: center;
+  }
+  .form-group button {
+    padding: 10px;
+    font-size: small;
+    width: 100px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  .form-group button:hover {
+    background-color: #0056b3;
+  }
+  #smallbox {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100px;
+    align-items: center;
+  }
+  #mainbutton {
+    padding: 10px;
+    font-size: medium;
+    width: 100%;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  #mainbutton:hover {
+    background-color: #0056b3;
+  }
+  .information {
+    display: inline-block;
+    font-size: small;
+    margin: 5px;
+  }
+  .remove-input {
+    cursor: pointer;
+    color: red;
+    margin-left: 5px;
+  }
+</style>
+</head>
+<body>
+
+<div class="registration-container">
+  <h2>Register</h2><br>
+  <form id="registrationForm">
+    <div class="form-group">
+        <label for="name">Enter your Name:</label><br>
+        <input type="text" id="smallbox" name="firstname" required placeholder="First Name">
+        <input type="text" id="smallbox" name="middlename" placeholder="Middle Name">
+        <input type="text" id="smallbox" name="lastname" required placeholder="Last Name">
+      </div><br>
+    <div class="form-group">
+      <label for="phoneNumber">Phone Number:</label><br>
+      <input type="tel" id="phoneNumber" name="phoneNumber"  required placeholder="9876543210">        
+      <div class="information"> This will be your User ID </div><br>
+      <button type="button" onclick="nsend()">Send OTP</button>
+      <input type="text" id="smallbox" name="otp" placeholder="Enter OTP">
+      <button type="button" onclick="nverify()">Verify OTP</button>
+      <div class="information" id="noutput"></div>
+    </div><br>
+    <div class="form-group">
+      <label for="email">Enter your Email ID:</label><br>
+      <input type="email" id="email" name="email" required placeholder="example@gmail.com"><br>
+      <button type="button" onclick="esend()">Send OTP</button>
+      <input type="text" id="smallbox" name="emailOtp" placeholder="Enter OTP">
+      <button type="button" onclick="everify()">Verify OTP</button>
+      <div class="information" id="eoutput"></div>
+    </div><br>
+    <div class="form-group">
+        <label for="password">Create a Password:</label><br>
+        <input type="password" id="password" name="password" required placeholder="Enter the Password"><br>
+        <input type="password" oninput="validatePassword()" id="confirmPassword" name="confirmPassword" placeholder="Confirm your Password" required>
+        <div class="information" id="confirmation"> </div>
+      </div><br>
+    <div class="form-group" id="securityQuestions">
+      <label for="securityQuestion">Security questions:</label>
+      <div>
+        <input list="securityQuestion" name="securityQuestion" placeholder="Question" required>
+        <datalist id="securityQuestion">
+          <option value="What is the first vehicle your parents purchased after marriage?"></option>
+          <option value="Which electronic brand you have used the most and felt worthy?"></option>
+          <option value="The most memorable theatre experience of your childhood? (movie name)"></option>
+        </datalist>
+        <input type="text" name="securityAnswer" placeholder="Answer" required>
+      </div>
+    </div>
+    <div class="form-group">
+      <button type="button" onclick="addInput()">Add Inputs</button>
+    </div><br>
+    <div class="form-group">
+      <button id="mainbutton" type="submit">Register</button>
+      <button id="mainbutton" type="submit">Login</button>
+    </div>
+  </form>
+</div>
+<script>
+  function nsend() {
+    var outputElement = document.getElementById("noutput");
+    outputElement.innerText = "OTP Sent";
+    outputElement.style.color = "black";
+  }
+
+  function nverify() {
+    var outputElement = document.getElementById("noutput");
+    outputElement.innerText = "OTP Verified Successfully";
+    outputElement.style.color = "green";
+  }
+  function esend() {
+    var outputElement = document.getElementById("eoutput");
+    outputElement.innerText = "OTP Sent";
+    outputElement.style.color = "black";
+  }
+
+  function everify() {
+    var outputElement = document.getElementById("eoutput");
+    outputElement.innerText = "OTP Verified Successfully";
+    outputElement.style.color = "green";
+  }
+
+  function addInput() {
+    var securityQuestions = document.getElementById("securityQuestions");
+    var newInputGroup = document.createElement("div");
+    newInputGroup.innerHTML = `
+      <div>
+        <input list="securityQuestion" name="securityQuestion" placeholder="Question">
+        <datalist id="securityQuestion">
+          <option value="What is the name of your first pet?"></option>
+          <option value="Where were you born?"></option>
+        </datalist>
+        <input type="text" name="securityAnswer" placeholder="Answer">
+        <span class="remove-input" onclick="removeInput(this)">x</span>
+      </div>`;
+    securityQuestions.appendChild(newInputGroup);
+  }
+
+  function removeInput(element) {
+    var parentDiv = element.parentNode.parentNode;
+    parentDiv.removeChild(element.parentNode);
+  }
+
+  function validatePassword() {
+    var password = document.getElementById("password").value;
+    var confirmPassword = document.getElementById("confirmPassword").value;
+    var confirmation = document.getElementById("confirmation");
+
+    if (password !== confirmPassword) {
+        confirmation.innerText = "Passwords do not match";
+        confirmation.style.color = 'red';
+    }
+    else {
+        confirmation.innerText = "Passwords matching";
+        confirmation.style.color = 'green';
+    }
+}
+</script>
+</body>
+</html>

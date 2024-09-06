@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function showContact(contacts,index)
+        {
+            return contacts instanceof Array && index > 0?`${contacts[index-1].name+" / "+contacts[index-1].phone+" / "+contacts[index-1].email}`:"Invalid Input"
+        }
+
+        function showAllContacts(contacts)
+        {
+            if(contacts instanceof Array){
+                let result = "";
+                for(contact of contacts)
+                {
+                    let detail_list = [];
+                    for(detail in contact)
+                    {
+                        detail_list.push(contact[detail]);
+                    }
+                    let details = detail_list.join(' / ');
+                    result += details + "\n\n";
+                }
+                return result;
+            }
+            return "Invalid Input";
+        }
+
+        function addNewContact(contacts,name,phone,email)
+        {
+            if (contacts instanceof Array){
+                let new_contact = {
+                    name: name,
+                    phone: phone,
+                    email: email
+                };
+                if (name && phone && email)
+                {
+                    contacts.push(new_contact);
+                    return "Contact added successfully";
+                }
+                else
+                {
+                    return "Contact didn't added due to invalid input(s)";
+                }
+            }
+            return "Invalid data";
+        }
+
+        function sortby(contacts,sort_by)
+        {
+            let array = [...contacts];
+            if (sort_by == "name")
+            {
+                return array.sort((a,b) => a.name.localeCompare(b.name));
+            }
+            else if(sort_by == "phone")
+            {
+                return array.sort((a,b) => a.phone.localeCompare(b.phone));
+            }
+            else if(sort_by == "email")
+            {
+                return array.sort((a,b) => a.email.localeCompare(b.email));
+            }
+        }
+
+        let contacts = [
+            {
+                name: "Maxwell Wright",
+                phone: "(0191) 719 6495",
+                email: "Curabitur.egestas.nunc@nonummyac.co.uk"
+            }, 
+            {
+                name: "Raja Villarreal",
+                phone: "0866 398 2895",
+                email: "posuere.vulputate@sed.com"
+            }, 
+            {
+                name: "Helen Richards",
+                phone: "0800 1111",
+                email: "libero@convallis.edu"
+            }];
+        let invalid = false;
+        while (!invalid)
+        {
+            last = contacts.length - 1;
+            let operation = prompt("Enter the operation [first / last / show / all / new]: ");
+            switch(operation)
+            {
+                case "first":
+                    alert(`${contacts[0].name+" / "+contacts[0].phone+" / "+contacts[0].email}`);
+                    break;
+                case "last":
+                    alert(`${contacts[last].name+" / "+contacts[last].phone+" / "+contacts[last].email}`);
+                    break;
+                case "show":
+                    index = Number(prompt("Enter the index"));
+                    alert(showContact(contacts,index));
+                    break;
+                case "all":
+                    alert(showAllContacts(contacts));
+                    break;
+                case "new":
+                    let name = prompt("Enter the name: ");
+                    let phone = prompt("Enter phone number: ");
+                    let email = prompt("Enter email address: ");
+                    alert(addNewContact(contacts,name,phone,email));
+                    break;
+                case "sort":
+                    let order = prompt("Enter sort order (name / phone / email)");
+                    if(order === "name" || order === "phone" || order === "email"){
+                        alert(showAllContacts(sortby(contacts,order)));
+                    }
+                    else{
+                        alert("Invalid Input");
+                    }
+                    break;
+                default:
+                    alert("Invalid Input!");
+                    invalid = true;
+            }
+        }
+    </script>
+</body>
+</html>

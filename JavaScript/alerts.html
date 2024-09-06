@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alerts Test</title>
+</head>
+<body>
+    <script>
+        alert("This is an alert");
+        let status = confirm("This is a confirm message");
+        let message = status?"You clicked Ok":"You clicked cancel";
+        message = prompt(message+",right?");
+        message = message?'"'+message+'"':"nothing"
+        alert(`You have entered ${message}`);
+    </script>
+</body>
+</html>

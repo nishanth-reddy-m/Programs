@@ -1,0 +1,11 @@
+let n = 95;
+let s = "String";
+let b = 1234567890n;
+let o = null;
+console.log(typeof(n));
+console.log(typeof(s));
+console.log(typeof(b));
+console.log(typeof(o));
+console.log();
+Typeof = typeof(n);
+console.log(typeof(Typeof));

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1
+        //let number = prompt("Enter a number: ");
+        // if (number > 90 && number < 110){
+        //     alert("Bingo!");
+        // }
+        // else{
+        //     alert("Miss");
+        // }
+        
+        //2
+        //(number > 90 && number < 110)?alert("Bingo!"):alert("Miss");
+
+        //3 Calculator
+        while (true) {
+        let num1 = prompt("Enter first number");
+        let num2 = prompt("Enter second number");
+        let operation = prompt("Enter operand (+, -, *, /)");
+
+        if (num1 === "Q" || num2 === "Q" || operation === "Q") {
+            break;
+        }
+        if (num1 === "" || num2 === "" || operation === "") {
+            alert("Error: at least one of the input is not given");
+            continue;
+        }
+        num1 = Number(num1);
+        num2 = Number(num2);
+
+        if (!Number.isNaN(num1) && !Number.isNaN(num2)) {
+            switch (operation) {
+                case "+":
+                    alert(`${num1} + ${num2} = ${num1 + num2}`);
+                    break;
+                case "-":
+                    alert(`${num1} - ${num2} = ${num1 - num2}`);
+                    break;
+                case "*":
+                    alert(`${num1} * ${num2} = ${num1 * num2}`);
+                    break;
+                case "/":
+                    alert(`${num1} / ${num2} = ${num1 / num2}`);
+                    break;
+                default:
+                    alert("Error: unknown operand");
+            }
+        } else {
+            alert("Error: at least one of the entered values is not a number");
+        }
+    }
+    </script>
+</body>
+</html>
