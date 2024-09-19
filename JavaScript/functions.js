@@ -34,7 +34,7 @@ function op(Function,a,b)
 
 let a = 5,b = 3;
 let operations = {"Addition":add,"Subtraction":subtract,"Multiplication":multiply,"Division":divide};
-for (operation in operations)
+for (let operation in operations)
 {
     console.log(`${operation} of ${a} and ${b} = ${op(operations[operation],a,b)}`);
 }
